@@ -1,0 +1,9 @@
+{
+    "name": "simplecolors",
+    "description": "The easiest way of making console output colorful.",
+    "version": "1.0.0",
+    "author": "DrDoof",
+    "dependencies": {
+        "color-convert": "^1.9.0"
+    }
+}
