@@ -2,12 +2,11 @@
 
 var convert = require('color-convert');
 
-const _REGEX_RGB = /&{(\d{1,3}),(\d{1,3}),(\d{1,3})}/g;
-const _REGEX_HEX = /&\{#?([A-F0-9]{6})\}/g;
+const _REGEX_RGB   = /&{(\d{1,3}),(\d{1,3}),(\d{1,3})}/g;
+const _REGEX_HEX   = /&\{#?([A-F0-9]{6})\}/g;
 const _REGEX_CODES = /&([0-8]|[a-p]x?)/g;
 
-const _CODES =
-{
+const _CODES = {
     '0':  0,   '1':  1,   '2':  2,   '3':  3,
     '4':  4,   '5':  7,   '6':  8,   '7':  9,
     'a':  30,  'b':  31,  'c':  32,  'd':  33,
@@ -20,8 +19,8 @@ const _CODES =
     'mx': 104, 'nx': 105, 'ox': 106, 'px': 107,
 };
 
-function escapeColors( str )
-{
+var Exp = {};
+Exp.escapeColors = function( str ) {
     str = str.replace(_REGEX_CODES, ( match, p1 ) =>
         "\033[" + _CODES[p1] + 'm');
     str = str.replace(_REGEX_RGB, ( match, p1, p2, p3 ) =>
@@ -29,6 +28,13 @@ function escapeColors( str )
     str = str.replace(_REGEX_HEX, ( match, p1 ) =>
         "\033[" + convert.hex.ansi16(p1) + 'm');
     return str;
-}
+};
 
-module.exports = escapeColors;
+Object.defineProperty(String.prototype, 'escapeColors', {
+    get: function escapeColors()
+        {
+            return Exp.escapeColors(this.toString());
+        }
+});
+
+module.exports = Exp.escapeColors;

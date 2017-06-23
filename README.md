@@ -14,6 +14,12 @@ var simplecolors = require('simplecolors');
 
 console.log( simplecolors('&aHe&bllo &fWo&2rld&0!') ); // --> 'Hello World'
 ```
+or
+```
+var simplecolors = require('simplecolors');
+
+console.log( '&aHe&bllo &fWo&2rld&0!'.escapeColors ); // --> 'Hello World'
+```
 Simply write '&' followed by one of the following codes in a string and pass it to simplecolors (&a for black, &2 for bold,..):
 ```
 0 - reset
