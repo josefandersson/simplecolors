@@ -1,9 +1,20 @@
 {
     "name": "simplecolors",
     "description": "The easiest way of making console output colorful.",
-    "version": "1.1.4",
+    "version": "1.1.5",
+    "repository": "josefandersson/simplecolors",
+    "main": "simplecolors.js",
     "author": "DrDoof",
     "dependencies": {
         "color-convert": "^1.9.0"
-    }
+    },
+    "keywords": [
+        "color",
+        "cli",
+        "console",
+        "simple",
+        "output",
+        "beautiful",
+        ":)"
+    ]
 }
